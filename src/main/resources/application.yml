@@ -46,11 +46,7 @@ upload:
     # 本地文件存储路径
     path: /usr/local/upload/
   oss:
-    url: http://feijiji.oss-cn-beijing.aliyuncs.com/
-    endpoint: oss-cn-beijing.aliyuncs.com
-    accessKeyId: LTAI5tRN6j7nZd9DDZN5VcMR
-    accessKeySecret: 6ECTYEAGpMC7UG9tfSI9G0EHhg25Uy
-    bucketName: feijiji
+
   cos:
     url: http://Bucket域名/
     secretId: cos的secretId
