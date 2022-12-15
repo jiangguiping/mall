@@ -1,0 +1,59 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: jiang
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/shppring_jianag?useSSL=false&serverTimezone=UTC
+    username: root
+    password: root
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    password:
+    lettuce:
+      pool:
+        max-active: 10
+        max-idle: 10
+        min-idle: 1
+        time-between-eviction-runs: 10s
+
+mybatis-plus:
+  mapper-locations: classpath*:mapper/*/*Mapper.xml #xml扫描，多个目录用逗号或者分号分隔（告诉 Mapper 所对应的 XML 文件位置）
+  # 配置slq打印日志
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      #      logic-delete-field: isDel  #全局逻辑删除字段值 3.3.0开始支持，详情看下面。
+      logic-delete-value: 1 # 逻辑已删除值(默认为 1)
+      logic-not-delete-value: 0 # 逻辑未删除值(默认为 0)
+
+
+logging:
+  level:
+    org.jiang: debug
+
+
+# 上传模式 可选 oss或local  （http://和最后的/一定不能去！！！）
+upload:
+  mode: oss
+  local:
+    # nginx映射本地文件路径，无域名则为 ip:83
+    url: http://你的文件上传子域名/
+    # 本地文件存储路径
+    path: /usr/local/upload/
+  oss:
+    url: http://feijiji.oss-cn-beijing.aliyuncs.com/
+    endpoint: oss-cn-beijing.aliyuncs.com
+    accessKeyId: LTAI5tRN6j7nZd9DDZN5VcMR
+    accessKeySecret: 6ECTYEAGpMC7UG9tfSI9G0EHhg25Uy
+    bucketName: feijiji
+  cos:
+    url: http://Bucket域名/
+    secretId: cos的secretId
+    secretKey: cos的secretKey
+    region: cos的region
+    bucketName: cos的bucketName
